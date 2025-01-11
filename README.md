@@ -4,20 +4,20 @@ This repository provides definitions and examples for different categories of em
 
 ## Table of Contents 📑
 - [Categories](#categories)
-  - [Single Board Computer (SBC)](#-single-board-computer-sbc)
+  - [Single Board Computer (SBC)](#%EF%B8%8F-single-board-computer-sbc)
   - [Compute Module (CM)](#%EF%B8%8F-compute-module-cm)
   - [Embedded Single Board Computer (eSBC)](#-embedded-single-board-computer-esbc)
   - [Embedded System Board (ESB)](#-embedded-system-board-esb)
-  - [Development/Evaluation Board](#developmentevaluation-board-devboardevalboard)
-- [Common Form Factors](#common-form-factors-)
+  - [Development/Evaluation Board](#%EF%B8%8F-developmentevaluation-board-devboardevalboard)
+- [Common Form Factors](#-common-form-factors)
   - [Standard Sizes](#standard-sizes)
-  - [Notes on Form Factors](#notes-on-form-factors)
   - [Emerging Form Factors](#emerging-form-factors)
-- [Consumer Electronics Integration](#consumer-electronics-integration-)
+  - [Notes on Form Factors](#notes-on-form-factors)
+- [Consumer Electronics Integration](#-consumer-electronics-integration)
   - [Common Examples](#common-examples)
   - [Recycling and Repurposing](#recycling-and-repurposing)
-- [Contributing](#contributing-)
-- [Notes](#notes-)
+- [Contributing](#-contributing)
+- [Notes](#-notes)
 
 ## Categories
 
