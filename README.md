@@ -4,7 +4,7 @@ This repository provides definitions and examples for different categories of em
 
 ## Table of Contents 📑
 - [Categories](#categories)
-  - [Single Board Computer (SBC)](#single-board-computer-sbc)
+  - [Single Board Computer (SBC)](#-single-board-computer-sbc)
   - [Compute Module (CM)](#-compute-module-cm)
   - [Embedded Single Board Computer (eSBC)](#-embedded-single-board-computer-esbc)
   - [Embedded System Board (ESB)](#-embedded-system-board-esb)
