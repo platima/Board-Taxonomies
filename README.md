@@ -1,6 +1,6 @@
 # Embedded Board Taxonomy 🔧
 
-This repository provides definitions and examples for different categories of embedded computing boards. The goal is to establish clear terminology for discussing and categorizing various types of development boards, single-board computers, and embedded platforms.
+This repository provides definitions and examples for different categories of embedded computing boards. The goal is to establish clear terminology for discussing and categorising various types of development boards, single-board computers, and embedded platforms.
 
 ## Categories
 
@@ -33,7 +33,7 @@ Key characteristics:
 - Same software capabilities as full SBCs
 - Two common form factors:
   - SODIMM form factor (67.6 × 30 mm), as used in CM1-3
-  - Custom Raspberry Pi CM4 and CM5 form factor (55 × 40 mm) with standardized connectors (2× B2B 100-pin for 'CM4', 3× for 'CM5')
+  - Custom Raspberry Pi CM4 and CM5 form factor (55 × 40 mm) with standardised connectors (2× B2B 100-pin for 'CM4', 3× for 'CM5')
 
 Examples:
 - Raspberry Pi Compute Module (CM3, CM4, CM5)
