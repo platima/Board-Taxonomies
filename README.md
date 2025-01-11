@@ -2,16 +2,17 @@
 
 This repository provides definitions and examples for different categories of embedded computing boards. The goal is to establish clear terminology for discussing and categorising various types of development boards, single-board computers, and embedded platforms.
 
-## 📑 Table of Contents
+## Table of Contents 📑
 - [Categories](#categories)
-  - [Single Board Computer (SBC)](#-single-board-computer-sbc)
+  - [Single Board Computer (SBC)](#single-board-computer-sbc)
   - [Compute Module (CM)](#-compute-module-cm)
   - [Embedded Single Board Computer (eSBC)](#-embedded-single-board-computer-esbc)
   - [Embedded System Board (ESB)](#-embedded-system-board-esb)
-  - [Development/Evaluation Board](#-developmentevaluation-board-devboardevalboard)
+  - [Development/Evaluation Board](#developmentevaluation-board-devboardevalboard)
 - [Common Form Factors](#common-form-factors-)
   - [Standard Sizes](#standard-sizes)
   - [Notes on Form Factors](#notes-on-form-factors)
+  - [Emerging Form Factors](#emerging-form-factors)
 - [Consumer Electronics Integration](#consumer-electronics-integration-)
   - [Common Examples](#common-examples)
   - [Recycling and Repurposing](#recycling-and-repurposing)
@@ -38,7 +39,7 @@ Examples:
 - Orange Pi
 - Banana Pi
 
-### 💻 Compute Module (CM)
+### 🖥️ Compute Module (CM)
 The core computing system of an SBC without fixed I/O, designed for integration into custom carrier boards.
 
 Key characteristics:
@@ -67,7 +68,7 @@ Key characteristics:
 - Accessed via SSH, UART, or similar
 - Often used in embedded applications
 - May have reduced I/O compared to full SBCs
-- Often in gumstick (~ 70 × 20 mm) or stamp (~ 25 × 25 mm) form factors
+- Often in gumstick (~ 50-70 × 20 mm), cracker (~ 50 x 50mm) or stamp (~ 25 × 25 mm) form factors
 
 Examples:
 - Raspberry Pi Compute Module (on carrier board)
@@ -110,17 +111,23 @@ Examples:
 - Microchip PIC development boards
 - NXP evaluation boards
 
-## Common Form Factors 📏
+## 📏 Common Form Factors
 
 Different board categories typically align with certain form factors:
 
 ### Standard Sizes
-- Credit Card: 85.6 × 53.98 mm (typical for SBCs)
+- Credit Card: ~85 × 56 mm (typical for SBCs like Raspberry Pi)
 - Mini-ITX: 170 × 170 mm (larger SBCs)
 - SODIMM: 67.6 × 30 mm (common for older Compute Modules)
 - RPi CM: 55 × 40 mm (standard for newer Compute Modules)
-- Gumstick: ~70 × 20 mm (common for eSBCs)
+- Gumstick: 51 × 21 mm base size, may extend to ~70 mm with Ethernet
 - Stamp: ~25 × 25 mm (common for eSBCs and some ESBs)
+- Cracker: 43 × 43 mm to 50 × 50 mm (emerging form factor for compact eSBCs)
+
+### Emerging Form Factors
+In 2024, a new trend emerged with ultra-compact eSBCs in a roughly square "cracker" form factor, ranging from 43 × 43 mm (Milk-V Duo S) to 50 × 50 mm (Luckfox Pico Ultra). These boards combine the capabilities of traditional eSBCs with an extremely compact footprint, positioning themselves between stamp-sized and traditional gumstick formats.
+
+This trend represents a push towards more compact yet fully-featured Linux-capable boards, particularly in the RISC-V space where new chips are enabling smaller form factors without sacrificing capabilities.
 
 ### Notes on Form Factors
 - SBCs typically stick to credit card size or larger standardised PC form factors
@@ -129,7 +136,7 @@ Different board categories typically align with certain form factors:
 - ESBs and DevBoards can vary widely in size depending on their purpose
 - Some manufacturers create their own custom form factors for specific use cases
 
-## Consumer Electronics Integration 📺
+## 📺 Consumer Electronics Integration
 
 Many modern consumer electronics devices contain boards that align with our taxonomy categories, even though they're not marketed as such:
 
@@ -148,7 +155,7 @@ Consumer electronics boards can often be repurposed. When identifying a board fr
 
 This classification can help in understanding a board's capabilities and potential uses when repurposing hardware.
 
-## Contributing 🤝
+## 🤝 Contributing
 
 This taxonomy is a living document. If you have suggestions for:
 - Additional board categories
@@ -158,7 +165,7 @@ This taxonomy is a living document. If you have suggestions for:
 
 Please open an issue or submit a pull request!
 
-## Notes 📝
+## 📝 Notes
 
 1. Some boards may blur the lines between categories or have features that span multiple categories. In these cases, consider the primary intended use case and main features.
 
