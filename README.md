@@ -116,16 +116,16 @@ Examples:
 Different board categories typically align with certain form factors:
 
 ### Standard Sizes
-- Credit Card: ~85 × 56 mm (typical for SBCs like Raspberry Pi)
-- Mini-ITX: 170 × 170 mm (larger SBCs)
-- SODIMM: 67.6 × 30 mm (common for older Compute Modules)
-- RPi CM: 55 × 40 mm (standard for newer Compute Modules)
-- Gumstick: 51 × 21 mm base size, may extend to ~70 mm with Ethernet
-- Stamp: ~25 × 25 mm (common for eSBCs and some ESBs)
+- Credit Card: ~85 × 56 mm (typical for SBCs like Raspberry Pi, Milk-V Mars or Radxa Rock)
+- Mini-ITX: 170 × 170 mm (larger SBCs like Radxa Rock 5 ITX or Milk-V Oasis)
+- SODIMM: 67.6 × 30 mm (common for older Compute Modules like Pine64 SOPINE and Raspberry Pi CM4S)
+- CM4 / CM5: 55 × 40 mm (standard for most newer Compute Modules)
+- Gumstick: 51 × 21 mm base size, may extend to ~70 mm with Ethernet (common for eSBCs like Raspberry Pi Pico, Milk-V Duo and Luckfox Pico)
+- Stamp: ~25 × 25 mm (some eSBCs and ESBs)
 - Cracker: 43 × 43 mm to 50 × 50 mm (emerging form factor for compact eSBCs)
 
 ### Emerging Form Factors
-In 2024, a new trend emerged with ultra-compact eSBCs in a roughly square "cracker" form factor, ranging from 43 × 43 mm (Milk-V Duo S) to 50 × 50 mm (Luckfox Pico Ultra). These boards combine the capabilities of traditional eSBCs with an extremely compact footprint, positioning themselves between stamp-sized and traditional gumstick formats.
+In 2019, a new trend was started with ultra-compact eSBCs in a square "cracker" form factor, with dimensions of 43 × 43 mm. This became more common in 2024 with the Milk-V Duo S, which also used the same PoE HAT header pin positioning, and a slight variant at 50 × 50 mm being the Luckfox Pico Ultra _(PoE HAT compatibility untested)_. These boards combine the capabilities of traditional eSBCs with an extremely compact footprint, positioning themselves between stamp-sized and traditional gumstick formats.
 
 This trend represents a push towards more compact yet fully-featured Linux-capable boards, particularly in the RISC-V space where new chips are enabling smaller form factors without sacrificing capabilities.
 
