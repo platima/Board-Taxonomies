@@ -2,6 +2,8 @@
 
 This repository provides definitions and examples for different categories of embedded computing boards. The goal is to establish clear terminology for discussing and categorising various types of development boards, single-board computers, and embedded platforms.
 
+The different potential ISAs such as x86, RISC-V, ARM and similar, do not have any direct impact on the definition.
+
 ## Categories
 
 ### 🖥️ Single Board Computer (SBC)
@@ -16,11 +18,11 @@ Key characteristics:
 - Typically credit card sized (85.6 × 53.98 mm) or up to Mini-ITX (170 × 170 mm)
 
 Examples:
-- Raspberry Pi (3, 4, 5)
+- Raspberry Pi Series
 - BeagleBone Black
-- ROCK Pi
-- Orange Pi
-- Banana Pi
+- Pine64 ROCK Series
+- Orange Pi Series
+- Banana Pi Series
 
 ### 💻 Compute Module (CM)
 The core computing system of an SBC without fixed I/O, designed for integration into custom carrier boards.
@@ -40,7 +42,9 @@ Examples:
 - NVIDIA Jetson modules
 - Intel NUC compute elements
 - Radxa CM3
+- Orange Pi CM5
 - Pine64 SOQuartz
+- Luckfox Core3566
 
 ### 🌐 Embedded Single Board Computer (eSBC)
 Similar to an SBC but designed for headless operation without display output.
@@ -51,11 +55,13 @@ Key characteristics:
 - Accessed via SSH, UART, or similar
 - Often used in embedded applications
 - May have reduced I/O compared to full SBCs
+- Ethernet is usually limited to 10/100Mbps, if present
 - Often in gumstick (~ 70 × 20 mm) or stamp (~ 25 × 25 mm) form factors
 
 Examples:
 - Milk-V Duo
-- Luckfox Pico Pro
+- Luckfox Pico
+- Pine64 Ox64
 - LattePanda Alpha (headless version)
 - Many industrial Linux boards
 
@@ -70,7 +76,7 @@ Key characteristics:
 - Part of a broader development ecosystem
 
 Examples:
-- Raspberry Pi Pico
+- Raspberry Pi Pico / Pico 2
 - Arduino boards (Uno, Mega, etc.)
 - ESP32 development boards
 - Teensy boards
