@@ -1,4 +1,4 @@
-# 🔧 Embedded Board Taxonomy
+# 🔧 Board Taxonomy Definitions
 
 This repository provides definitions and examples for different categories of embedded computing boards. The goal is to establish clear terminology for discussing and categorising various types of development boards, single-board computers, and embedded platforms.
 
