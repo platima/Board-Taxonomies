@@ -42,11 +42,15 @@ Key characteristics:
 - Typically credit card sized (85.6 × 53.98 mm) or up to Mini-ITX (170 × 170 mm)
 
 Examples:
-- Raspberry Pi (3, 4, 5)
+- Raspberry Pi 2/3/4/5
 - BeagleBone Black
-- ROCK Pi
-- Orange Pi
-- Banana Pi
+- Radxa Rock 4 SE
+- Orange Pi 4 Pro
+- Banana Pi BPi-M4
+- Libre Competer Le Potato
+- Milk-V Mars
+- Pine64 ROCK64
+- SpacemiT Muse Pi Pro
 
 ### 🖥️ Compute Module (CM)
 The core computing system of an SBC without fixed I/O, designed for integration into custom carrier boards.
@@ -64,8 +68,10 @@ Key characteristics:
 Examples:
 - Raspberry Pi Compute Module (CM3, CM4, CM5)
 - NVIDIA Jetson modules (in some variants)
-- Radxa CM3
+- Radxa CM3/CM4
+- Orange Pi CM5
 - Pine64 SOQuartz
+- Milk-V Mars CM
 
 ### 🔧 System-on-Module (SoM)
 A complete computing system in a compact, production-ready module designed for integration into end products. Unlike Compute Modules which are often development-focused with proprietary connectors, SoMs typically use standardized interfaces.
@@ -100,11 +106,12 @@ Key characteristics:
 - Often in gumstick (~50-70 × 20 mm), cracker (~50 × 50 mm) or stamp (~25 × 25 mm) form factors
 
 Examples:
-- Milk-V Duo
+- Pine64 Ox64
+- Milk-V Duo S
 - Luckfox Pico Pro
 - LattePanda Alpha (headless version)
-- Many industrial Linux boards
 - BeagleBone AI-64 (when used headless)
+- Many industrial Linux boards
 
 ### 🔌 Embedded System Board (ESB)
 General-purpose boards built around an MCU (microcontroller) or simple SOC without MMU, designed for embedded applications.
@@ -119,7 +126,7 @@ Key characteristics:
 - Lower power consumption than SBC/eSBC counterparts
 
 Examples:
-- Raspberry Pi Pico
+- Raspberry Pi Pico 2
 - Arduino boards (Uno, Mega, etc.)
 - ESP32 development boards
 - Teensy boards
@@ -139,6 +146,7 @@ Examples:
 - STM32 Nucleo boards
 - Nordic nRF52 Development Kit
 - Texas Instruments LaunchPad
+- ESP32-P4-Function-EV-Board
 - Microchip PIC development boards
 - NXP evaluation boards
 
@@ -155,6 +163,7 @@ Key characteristics:
 - Used in signal processing, hardware emulation, and custom computing
 
 Examples:
+- BeagleBone BeagleV-Fire
 - Xilinx/AMD development boards (Zynq, Artix, Kintex series)
 - Intel/Altera DE-series boards
 - Lattice iCE40 boards
