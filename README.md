@@ -7,8 +7,7 @@ This repository provides definitions and examples for different categories of em
 ## 📑 Table of Contents
 - [Categories](#categories)
   - [Single Board Computer (SBC)](#-single-board-computer-sbc)
-  - [Compute Module (CM)](#-compute-module-cm)
-  - [System-on-Module (SoM)](#-system-on-module-som)
+  - [Compute Module / System-on-Module (CM/SoM)](#-compute-module--system-on-module-cmsom)
   - [Embedded Single Board Computer (eSBC)](#-embedded-single-board-computer-esbc)
   - [Embedded System Board (ESB)](#-embedded-system-board-esb)
   - [Development/Evaluation Board](#-developmentevaluation-board-devboardevalboard)
@@ -52,46 +51,31 @@ Examples:
 - Pine64 ROCK64
 - SpacemiT Muse Pi Pro
 
-### 🖥️ Compute Module (CM)
-The core computing system of an SBC without fixed I/O, designed for integration into custom carrier boards.
+### 🖥️ Compute Module / System-on-Module (CM/SoM)
+The core computing system without fixed I/O, designed for integration into custom carrier boards. The terms "Compute Module" and "System-on-Module" are used interchangeably in the industry with no meaningful technical distinction.
 
 Key characteristics:
-- Contains the essential computing elements (CPU, RAM, storage)
-- Requires a carrier board for I/O and power
+- Contains the essential computing elements (CPU, RAM, storage, often power management)
+- Requires a carrier board for I/O and power delivery
 - Highly flexible in terms of final implementation
-- Often used in commercial products
+- Used in both prototyping and production deployments
 - Same software capabilities as full SBCs
-- Two common form factors:
-  - SODIMM form factor (67.6 × 30 mm), as used in CM1-3
-  - Custom Raspberry Pi form factor (55 × 40 mm) with standardised connectors (2× B2B 100-pin for CM4, 3× for CM5)
-
-Examples:
-- Raspberry Pi Compute Module (CM3, CM4, CM5)
-- NVIDIA Jetson modules (in some variants)
-- Radxa CM3/CM4
-- Orange Pi CM5
-- Pine64 SOQuartz
-- Milk-V Mars CM
-
-### 🔧 System-on-Module (SoM)
-A complete computing system in a compact, production-ready module designed for integration into end products. Unlike Compute Modules which are often development-focused with proprietary connectors, SoMs typically use standardized interfaces.
-
-Key characteristics:
-- Contains CPU, RAM, storage, and power management
-- Uses standardized connectors (often castellated edges, LGA, or standard headers)
-- Designed specifically for production deployment, not development
 - May include additional peripherals (WiFi, Bluetooth, etc.)
-- Often certified for specific regulations (FCC, CE, etc.)
-- Carrier board provides application-specific I/O
-- Usually comes with long-term availability guarantees
+- Organized by connector/form factor standards
 
-Examples:
-- Variscite VAR-SOM series
-- NVIDIA Jetson modules (in SoM variants)
-- Toradex Colibri/Apalis modules
-- Phytec phyCORE modules
-- Boundary Devices Nitrogen SoMs
-- Intel NUC compute elements
+**CM4/CM5 Connector Standard** (emerging de facto standard):
+- **CM4 format**: 2× 100-pin B2B connectors, 55 × 40 mm
+- **CM5 format**: 3× 100-pin B2B connectors, 55 × 40 mm (backward compatible with CM4 carriers for basic I/O)
+- Broad ecosystem support with many compatible carrier boards available
+- Examples: Raspberry Pi CM4/CM5, Radxa CM3/CM4/CM5, Orange Pi CM5, Milk-V Mars CM, Pine64 SOQuartz
+
+**SODIMM Form Factor** (67.6 × 30 mm, laptop memory connector):
+- Established standard with wide industrial adoption
+- Examples: Raspberry Pi CM1-3/CM4S, Pine64 SOPINE, Toradex Colibri/Apalis, many industrial modules
+
+**Custom Connector Implementations**:
+- Proprietary or manufacturer-specific connector designs
+- Examples: NVIDIA Jetson modules, Variscite VAR-SOM, Phytec phyCORE, Boundary Devices Nitrogen, Debix SOM, Intel NUC compute elements
 
 ### 🌐 Embedded Single Board Computer (eSBC)
 Similar to an SBC but designed for headless or embedded display operation. The key differentiator is the lack of GPU capabilities for general computing.
@@ -109,9 +93,7 @@ Examples:
 - Pine64 Ox64
 - Milk-V Duo S
 - Luckfox Pico Pro
-- LattePanda Alpha (headless version)
-- BeagleBone AI-64 (when used headless)
-- Many industrial Linux boards
+- Many industrial Linux boards (headless variants without GPU)
 
 ### 🔌 Embedded System Board (ESB)
 General-purpose boards built around an MCU (microcontroller) or simple SOC without MMU, designed for embedded applications.
@@ -215,9 +197,7 @@ Follow this flowchart to classify a board:
    - Yes → Continue
 
 5. **Does it require a carrier/base board for basic I/O?**
-   - Yes → Check if it's designed for production or development:
-     - Production-focused with standardized connectors → **System-on-Module (SoM)**
-     - Development-focused with proprietary connectors → **Compute Module (CM)**
+   - Yes → **Compute Module / System-on-Module (CM/SoM)**
    - No → Continue
 
 6. **Does it have GPU capabilities for general-purpose graphics?**
@@ -228,30 +208,32 @@ Follow this flowchart to classify a board:
 
 Key technical aspects that define categories:
 
-| Feature | SBC | CM | SoM | eSBC | ESB | Dev/Eval | FPGA | AI/ML |
-|---------|-----|----|----|------|-----|----------|------|-------|
-| **MMU** | ✓ | ✓ | ✓ | ✓ | ✗ | Varies | N/A | ✓ |
-| **GPU** | ✓ | ✓ | ✓ | ✗ | ✗ | Varies | N/A | Optional |
-| **Full OS** | ✓ | ✓ | ✓ | ✓ | ✗ | Varies | Optional | ✓ |
-| **Display Out** | ✓ | ✓ | ✓ | ✗/Embedded | ✗ | Varies | Optional | Optional |
-| **Standalone** | ✓ | ✗ | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| **Production Ready** | ✓ | Optional | ✓ | ✓ | ✓ | ✗ | ✗ | ✓ |
+| Feature | SBC | CM/SoM | eSBC | ESB | Dev/Eval | FPGA | AI/ML |
+|---------|-----|--------|------|-----|----------|------|-------|
+| **MMU** | ✓ | ✓ | ✓ | ✗ | Varies | N/A | ✓ |
+| **GPU** | ✓ | ✓ | ✗ | ✗ | Varies | N/A | Optional |
+| **Full OS** | ✓ | ✓ | ✓ | ✗ | Varies | Optional | ✓ |
+| **Display Out** | ✓ | Via carrier | ✗/Embedded | ✗ | Varies | Optional | Optional |
+| **Standalone** | ✓ | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| **Production Ready** | ✓ | ✓ | ✓ | ✓ | ✗ | ✗ | ✓ |
 
 ### Edge Cases and Overlapping Categories
 
 Some boards span multiple categories or present classification challenges:
 
-**Compute Module on Carrier Board:**
-- CM4 on official I/O board with HDMI → Functions as **SBC**
-- CM4 on headless carrier board → Functions as **eSBC**
-- Classification depends on the carrier board implementation
+**Compute Module/SoM on Carrier Board:**
+- The module itself is classified as **CM/SoM**
+- However, the complete system (module + carrier) can be described as:
+  - **SBC** if the carrier provides GPU-equipped display outputs (e.g., CM4 on official I/O board with HDMI)
+  - **eSBC** if the carrier is headless or only has embedded display outputs
+- Classification depends on the complete system configuration
 
 **Boards with Multiple Purposes:**
 - NVIDIA Jetson series can be classified as:
-  - **AI/ML Accelerator** (when focus is on GPU/AI capabilities)
-  - **SBC** (when used as general-purpose computer)
-  - **SoM** (in production deployments)
-- Use the primary intended use case for classification
+  - **CM/SoM** (when referring to the module alone)
+  - **AI/ML Accelerator** (when emphasis is on GPU/AI capabilities of the complete system)
+  - **SBC** (when the complete system is used as a general-purpose computer)
+- Use the context and primary intended use case for classification
 
 **Development vs. Production:**
 - Many ESBs (like Arduino or Pico) are used in both development and production
@@ -271,7 +253,7 @@ Some boards span multiple categories or present classification challenges:
 **Hybrid Boards:**
 - STM32MP1 boards (MCU + MPU in one chip) → Classify by primary processor
 - RP2040 with Linux (via emulation/PIO tricks) → Still **ESB** (no true MMU)
-- BeagleBone AI-64 → **SBC** (has MMU/GPU) but can also be **AI/ML Accelerator**
+- Boards with AI accelerators (BeagleBone AI-64, RK3588 boards) → **SBC** if they have MMU/GPU, can also be classified as **AI/ML Accelerator** depending on emphasis
 
 ## 📏 Common Form Factors
 
@@ -301,14 +283,11 @@ While any category can theoretically use any form factor, certain patterns are c
 - Mini-ITX (170 × 170 mm) - For high-performance variants
 - Custom sizes based on PC standards
 
-**Compute Modules** are highly standardized:
-- SODIMM (67.6 × 30 mm) - Older standard
-- CM4/CM5 (55 × 40 mm) - Modern standard
-- Proprietary sizes with standardized connectors
-
-**System-on-Modules** vary widely:
-- Often use standardized connectors rather than standardized sizes
-- LGA, castellated edges, or board-to-board connectors
+**Compute Modules / System-on-Modules** have emerging standards:
+- **CM4/CM5 (55 × 40 mm)** - Emerging de facto standard with broad compatibility
+- **SODIMM (67.6 × 30 mm)** - Established industrial standard
+- **Custom implementations** - Vary widely with proprietary connectors (LGA, castellated edges, B2B)
+- Connector standardization is more important than physical size
 - Size depends on feature set and target application
 
 **eSBCs** trend toward compact formats:
@@ -391,7 +370,7 @@ Quick links:
 
 3. **Form Factor Flexibility**: The presence or absence of specific features (like wireless connectivity or storage) is not a primary factor in categorisation, as these can appear across all categories. Form factors are guidelines, not strict rules.
 
-4. **Compute Modules and Carrier Boards**: Compute Modules and System-on-Modules bridge multiple categories depending on their carrier board implementation - they can become SBCs, eSBCs, or specialized devices based on the carrier board design.
+4. **Compute Modules/SoMs and Carrier Boards**: CM/SoM modules bridge multiple categories depending on their carrier board implementation - the complete system can function as an SBC, eSBC, or specialized device based on the carrier board design.
 
 5. **Living Document**: This taxonomy evolves with the industry. Check the [CHANGELOG.md](CHANGELOG.md) for updates and revisions to definitions.
 
