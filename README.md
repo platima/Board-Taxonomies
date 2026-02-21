@@ -370,7 +370,7 @@ Quick links:
 
 3. **Form Factor Flexibility**: The presence or absence of specific features (like wireless connectivity or storage) is not a primary factor in categorisation, as these can appear across all categories. Form factors are guidelines, not strict rules.
 
-4. **Compute Modules/SoMs and Carrier Boards**: CM/SoM modules bridge multiple categories depending on their carrier board implementation - the complete system can function as an SBC, eSBC, or specialized device based on the carrier board design.
+4. **Compute Modules/SoMs and Carrier Boards**: CM/SoM modules bridge multiple categories depending on their carrier board implementation - the complete system can function as an SBC, eSBC, or specialised device based on the carrier board design.
 
 5. **Living Document**: This taxonomy evolves with the industry. Check the [CHANGELOG.md](CHANGELOG.md) for updates and revisions to definitions.
 
