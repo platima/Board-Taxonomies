@@ -67,6 +67,10 @@ These conventions are derived from the existing README.md and must be followed f
 - Width × Height order is used consistently (e.g., `85 × 56 mm`).
 - Approximate sizes use `~` prefix: `~50 × 50 mm`.
 
+### Language
+Australian English in **all** documentation and commit messages.
+Examples: initialise, behaviour, colour, licence, serialisation, organisation, optimise, minimise, recognise.
+
 ### Tone and voice
 - Neutral, reference-document style — no marketing language.
 - Present tense, third person for definitions.
@@ -78,20 +82,32 @@ These conventions are derived from the existing README.md and must be followed f
 
 Because this is a documentation-only repository, the "development" workflow is simple:
 
-1. **Edit** `README.md` directly — there is no code generation or build step.
-2. **Verify** Markdown renders correctly (headings, bullet lists, table of contents anchor links).
-3. **Commit** with a clear message describing what changed and why:
+1. **Branch** — create a `feature/<name>` or `fix/<name>` branch off `master` for non-trivial changes.
+2. **Edit** `README.md` directly — there is no code generation or build step.
+3. **Verify** Markdown renders correctly (headings, bullet lists, table of contents anchor links).
+4. **Commit** using [Conventional Commits](https://www.conventionalcommits.org/) format:
+   - `docs:` — content additions or updates (new boards, form factors, clarifications)
+   - `fix:` — typo corrections, broken anchor links, formatting errors
+   - `chore:` — CLAUDE.md updates, FUNDING.yml, repo housekeeping
    ```
-   Add Milk-V Oasis to SBC examples
-   Clarify cracker form factor dimensions for Luckfox Pico Ultra
+   docs: add Milk-V Oasis to SBC examples
+   fix: correct cracker form factor dimensions for Luckfox Pico Ultra
    ```
-4. **Push** to the appropriate branch (see below).
+5. **Push** to the appropriate branch (see below).
 
 There are no linters, formatters, pre-commit hooks, or tests to run.
 
 ### Branching
 - `master` is the stable branch; direct pushes are acceptable for the maintainer.
 - Claude sessions work on `claude/<session-id>` branches and open pull requests to `master`.
+
+### Standard task completion checklist
+Every change must complete **all** of these steps before it is considered done:
+
+1. Edit `README.md` (and/or `CLAUDE.md` if conventions changed).
+2. Verify ToC anchor links still resolve after any heading changes.
+3. Commit with a Conventional Commits message (Australian English).
+4. Push and open a pull request to `master` if the change is non-trivial.
 
 ---
 
