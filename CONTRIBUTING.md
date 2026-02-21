@@ -9,7 +9,7 @@ Thank you for your interest in contributing to the Board Taxonomies project! Thi
 If you find any of the following, please open an issue:
 
 - Incorrect or unclear category definitions
-- Boards that are miscategorized
+- Boards that are miscategorised
 - Missing board categories
 - Typos or formatting issues
 - Broken links
@@ -35,7 +35,7 @@ We welcome suggestions for:
 #### Pull Request Guidelines
 
 - One logical change per pull request
-- Include reasoning for categorization changes
+- Include reasoning for categorisation changes
 - Provide sources/references when possible
 - Ensure markdown formatting is consistent
 - Update the Table of Contents if you add new sections
@@ -61,7 +61,7 @@ If proposing a new category, please include:
 
 ### Classification Disputes
 
-If you disagree with how a board is categorized:
+If you disagree with how a board is categorised:
 
 1. Open an issue explaining your reasoning
 2. Reference the specific characteristics from the definitions
@@ -90,6 +90,6 @@ Please note that this project has a [Code of Conduct](CODE_OF_CONDUCT.md). By pa
 
 ## Recognition
 
-All contributors will be recognized in the project. Significant contributions may be highlighted in release notes or changelog updates.
+All contributors will be recognised in the project. Significant contributions may be highlighted in release notes or changelog updates.
 
 Thank you for helping improve this taxonomy!

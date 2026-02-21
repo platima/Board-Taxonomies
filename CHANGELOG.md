@@ -6,11 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-02-21
+
 ### Added
-- MIT License
+- MIT Licence
 - Contributing guidelines (CONTRIBUTING.md)
 - Code of Conduct (CODE_OF_CONDUCT.md)
 - This changelog
+- CLAUDE.md AI assistant guide
 - FPGA Development Board category
 - AI/ML Accelerator Board category
 - Classification decision tree
@@ -20,22 +23,24 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 - **Merged Compute Module (CM) and System-on-Module (SoM)** into single category "CM/SoM"
-  - Organized by connector standards (CM4/CM5, SODIMM, Custom) instead of artificial market distinction
+  - Organised by connector standards (CM4/CM5, SODIMM, Custom) instead of artificial market distinction
   - Acknowledges these terms are used interchangeably in the industry
   - Highlights CM4/CM5 as emerging de facto standard with broad compatibility
 - Clarified eSBC display output requirements (no GPU vs. has GPU)
 - Fixed form factor dimension inconsistencies (credit card size)
 - Improved carrier board classification examples
 - Enhanced OS classification criteria (MCU/SOC, MMU, GPU-based)
-- Reorganized form factor section to note common associations while maintaining flexibility
+- Reorganised form factor section to note common associations while maintaining flexibility
 - Added reference to 2019 cracker form factor trend origin
 - Fixed broken Table of Contents links
 - Updated board examples: Raspberry Pi Pico 2, BeagleV-Fire, ESP32-P4-Function-EV-Board, and many others
 
 ### Fixed
 - Corrected credit card dimensions to standard 85.6 × 53.98 mm
+- Corrected typo: "Libre Competer" → "Libre Computer" in SBC examples
 - Removed LattePanda Alpha and BeagleBone AI-64 from eSBC examples (both have GPUs, should be classified as SBC)
 - Removed conflicting Raspberry Pi Compute Module example from eSBC category
+- Localised Australian English throughout all documentation
 
 ## [1.0.0] - 2025-01-14
 
@@ -51,5 +56,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Contributing section
 - Board examples for each category
 
-[Unreleased]: https://github.com/platima/Board-Taxonomies/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/platima/Board-Taxonomies/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/platima/Board-Taxonomies/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/platima/Board-Taxonomies/releases/tag/v1.0.0

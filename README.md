@@ -6,14 +6,14 @@ This repository provides definitions and examples for different categories of em
 
 ## 📑 Table of Contents
 - [Categories](#categories)
-  - [Single Board Computer (SBC)](#-single-board-computer-sbc)
-  - [Compute Module / System-on-Module (CM/SoM)](#-compute-module--system-on-module-cmsom)
+  - [Single Board Computer (SBC)](#%EF%B8%8F-single-board-computer-sbc)
+  - [Compute Module / System-on-Module (CM/SoM)](#%EF%B8%8F-compute-module--system-on-module-cmsom)
   - [Embedded Single Board Computer (eSBC)](#-embedded-single-board-computer-esbc)
   - [Embedded System Board (ESB)](#-embedded-system-board-esb)
-  - [Development/Evaluation Board](#-developmentevaluation-board-devboardevalboard)
+  - [Development/Evaluation Board](#%EF%B8%8F-developmentevaluation-board-devboardevalboard)
   - [FPGA Development Board](#-fpga-development-board)
   - [AI/ML Accelerator Board](#-aiml-accelerator-board)
-- [Classification Guide](#-classification-guide)
+- [Classification Guide](#%EF%B8%8F-classification-guide)
   - [Decision Tree](#decision-tree)
   - [Technical Differentiators](#technical-differentiators)
   - [Edge Cases and Overlapping Categories](#edge-cases-and-overlapping-categories)
@@ -46,7 +46,7 @@ Examples:
 - Radxa Rock 4 SE
 - Orange Pi 4 Pro
 - Banana Pi BPi-M4
-- Libre Competer Le Potato
+- Libre Computer Le Potato
 - Milk-V Mars
 - Pine64 ROCK64
 - SpacemiT Muse Pi Pro
@@ -61,7 +61,7 @@ Key characteristics:
 - Used in both prototyping and production deployments
 - Same software capabilities as full SBCs
 - May include additional peripherals (WiFi, Bluetooth, etc.)
-- Organized by connector/form factor standards
+- Organised by connector/form factor standards
 
 **CM4/CM5 Connector Standard** (emerging de facto standard):
 - **CM4 format**: 2× 100-pin B2B connectors, 55 × 40 mm
@@ -141,7 +141,7 @@ Key characteristics:
 - Used for custom digital logic, hardware acceleration, and prototyping
 - Often includes additional peripherals for interfacing
 - May include ARM cores embedded in the FPGA (SoC FPGAs)
-- Requires specialized development tools (Vivado, Quartus, etc.)
+- Requires specialised development tools (Vivado, Quartus, etc.)
 - Used in signal processing, hardware emulation, and custom computing
 
 Examples:
@@ -153,11 +153,11 @@ Examples:
 - Terasic DE10-Nano
 
 ### 🤖 AI/ML Accelerator Board
-Specialized boards with dedicated AI/ML acceleration hardware, designed for inference or training workloads.
+Specialised boards with dedicated AI/ML acceleration hardware, designed for inference or training workloads.
 
 Key characteristics:
-- Contains specialized AI/ML accelerators (NPU, TPU, or AI coprocessors)
-- Optimized for neural network inference or training
+- Contains specialised AI/ML accelerators (NPU, TPU, or AI coprocessors)
+- Optimised for neural network inference or training
 - May be standalone boards or companion accelerators
 - Often includes a host processor (ARM, x86) alongside accelerator
 - Typically runs Linux with AI frameworks (TensorFlow, PyTorch, etc.)
@@ -270,7 +270,7 @@ Different board categories typically align with certain form factors:
 
 ### Emerging Form Factors
 
-The "cracker" form factor emerged around 2019 (based on market research and Google Trends data) with ultra-compact eSBCs in a square format, starting at 43 × 43 mm. This became more standardized in 2024 with the Milk-V Duo S, which also established a common PoE HAT header pin positioning. A larger variant at 50 × 50 mm appeared with the Luckfox Pico Ultra _(PoE HAT compatibility untested)_.
+The "cracker" form factor emerged around 2019 (based on market research and Google Trends data) with ultra-compact eSBCs in a square format, starting at 43 × 43 mm. This became more standardised in 2024 with the Milk-V Duo S, which also established a common PoE HAT header pin positioning. A larger variant at 50 × 50 mm appeared with the Luckfox Pico Ultra _(PoE HAT compatibility untested)_.
 
 These boards combine the capabilities of traditional eSBCs with an extremely compact footprint, positioning themselves between stamp-sized and traditional gumstick formats. This trend represents a push towards more compact yet fully-featured Linux-capable boards, particularly in the RISC-V space where new chips are enabling smaller form factors without sacrificing capabilities.
 
@@ -287,7 +287,7 @@ While any category can theoretically use any form factor, certain patterns are c
 - **CM4/CM5 (55 × 40 mm)** - Emerging de facto standard with broad compatibility
 - **SODIMM (67.6 × 30 mm)** - Established industrial standard
 - **Custom implementations** - Vary widely with proprietary connectors (LGA, castellated edges, B2B)
-- Connector standardization is more important than physical size
+- Connector standardisation is more important than physical size
 - Size depends on feature set and target application
 
 **eSBCs** trend toward compact formats:
