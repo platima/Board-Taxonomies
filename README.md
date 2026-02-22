@@ -11,7 +11,6 @@ This repository provides definitions and examples for different categories of em
   - [Embedded Single Board Computer (eSBC)](#-embedded-single-board-computer-esbc)
   - [Embedded System Board (ESB)](#-embedded-system-board-esb)
   - [Development/Evaluation Board](#%EF%B8%8F-developmentevaluation-board-devboardevalboard)
-  - [FPGA Development Board](#-fpga-development-board)
   - [AI/ML Accelerator Board](#-aiml-accelerator-board)
 - [Classification Guide](#%EF%B8%8F-classification-guide)
   - [Decision Tree](#decision-tree)
@@ -34,7 +33,7 @@ A complete computer system implemented on a single board, capable of running a f
 
 Key characteristics:
 - Runs full multi-tasking operating systems (requires MMU-equipped processor)
-- Has display output with GPU capabilities (HDMI, DisplayPort, DVI, etc.)
+- Has standard display output (HDMI, DisplayPort, DVI) backed by a 3D-capable GPU for desktop graphics
 - Generally includes standard PC interfaces (USB, network, etc.)
 - May be lower power than traditional PCs
 - Complete system on a single board
@@ -82,7 +81,8 @@ Similar to an SBC but designed for headless or embedded display operation. The k
 
 Key characteristics:
 - Runs full multi-tasking operating systems (requires MMU-equipped processor)
-- Either no display output, or only embedded display interfaces (MIPI DSI, LVDS) without GPU
+- Either no display output, only embedded display interfaces (MIPI DSI, LVDS), or display output driven by a VPU or 2D hardware engine — but no 3D-capable GPU
+- _A VPU or hardware 2D engine driving HDMI for HMI applications does not qualify as a GPU for SBC classification_
 - May have ISP (Image Signal Processor) for camera processing but not general-purpose graphics
 - Accessed via SSH, UART, or similar for headless variants
 - Often used in embedded applications (IoT gateways, industrial controllers, camera systems)
@@ -93,6 +93,7 @@ Examples:
 - Pine64 Ox64
 - Milk-V Duo S
 - Luckfox Pico Pro
+- Luckfox Lyra (RV3506G2 — HDMI via VPU for HMI, no 3D GPU)
 - Many industrial Linux boards (headless variants without GPU)
 
 ### 🔌 Embedded System Board (ESB)
@@ -132,19 +133,7 @@ Examples:
 - Microchip PIC development boards
 - NXP evaluation boards
 
-### 🔲 FPGA Development Board
-Boards built around Field-Programmable Gate Arrays, allowing hardware-level programmability and parallel processing.
-
-Key characteristics:
-- Centred around an FPGA chip (Xilinx, Intel/Altera, Lattice, etc.)
-- Hardware is reconfigurable at the logic gate level
-- Used for custom digital logic, hardware acceleration, and prototyping
-- Often includes additional peripherals for interfacing
-- May include ARM cores embedded in the FPGA (SoC FPGAs)
-- Requires specialised development tools (Vivado, Quartus, etc.)
-- Used in signal processing, hardware emulation, and custom computing
-
-Examples:
+**FPGA Development Boards** _(special case — see [Notes](#-notes))_:
 - BeagleBone BeagleV-Fire
 - Xilinx/AMD development boards (Zynq, Artix, Kintex series)
 - Intel/Altera DE-series boards
@@ -165,12 +154,10 @@ Key characteristics:
 - May support specific model formats (ONNX, TensorFlow Lite, etc.)
 
 Examples:
-- Google Coral Dev Board
-- NVIDIA Jetson Nano/Xavier/Orin (with emphasis on AI features)
-- Intel Neural Compute Stick (USB accelerator)
-- Hailo-8 AI accelerator boards
-- Rockchip RK3588-based boards (with NPU)
-- BeagleBone AI-64 (with C7x DSP for AI)
+- Google Coral Dev Board (Edge TPU)
+- NVIDIA Jetson Nano/Xavier/Orin (GPU + tensor core AI acceleration)
+- BeagleBone AI-64 (TDA4VM with C7x DSP + MMA for AI)
+- Canaan CanMV-K230 (RISC-V with KPU neural network accelerator)
 
 ## 🗺️ Classification Guide
 
@@ -180,27 +167,23 @@ This section helps you determine which category a board belongs to, especially f
 
 Follow this flowchart to classify a board:
 
-1. **Does it have an FPGA as the primary component?**
-   - Yes → **FPGA Development Board**
-   - No → Continue
-
-2. **Is AI/ML acceleration the primary purpose?**
+1. **Is AI/ML acceleration the primary purpose?**
    - Yes → **AI/ML Accelerator Board**
    - No → Continue
 
-3. **Is it designed primarily to evaluate a specific chip?**
-   - Yes → **Development/Evaluation Board**
+2. **Is it designed primarily to evaluate a specific chip?**
+   - Yes → **Development/Evaluation Board** _(includes FPGA development boards — see [Notes](#-notes))_
    - No → Continue
 
-4. **Does it have an MMU-capable processor?**
+3. **Does it have an MMU-capable processor?**
    - No → **Embedded System Board (ESB)**
    - Yes → Continue
 
-5. **Does it require a carrier/base board for basic I/O?**
+4. **Does it require a carrier/base board for basic I/O?**
    - Yes → **Compute Module / System-on-Module (CM/SoM)**
    - No → Continue
 
-6. **Does it have GPU capabilities for general-purpose graphics?**
+5. **Does it have a 3D-capable GPU for desktop graphics?**
    - Yes → **Single Board Computer (SBC)**
    - No → **Embedded Single Board Computer (eSBC)**
 
@@ -208,14 +191,14 @@ Follow this flowchart to classify a board:
 
 Key technical aspects that define categories:
 
-| Feature | SBC | CM/SoM | eSBC | ESB | Dev/Eval | FPGA | AI/ML |
-|---------|-----|--------|------|-----|----------|------|-------|
-| **MMU** | ✓ | ✓ | ✓ | ✗ | Varies | N/A | ✓ |
-| **GPU** | ✓ | ✓ | ✗ | ✗ | Varies | N/A | Optional |
-| **Full OS** | ✓ | ✓ | ✓ | ✗ | Varies | Optional | ✓ |
-| **Display Out** | ✓ | Via carrier | ✗/Embedded | ✗ | Varies | Optional | Optional |
-| **Standalone** | ✓ | ✗ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| **Production Ready** | ✓ | ✓ | ✓ | ✓ | ✗ | ✗ | ✓ |
+| Feature | SBC | CM/SoM | eSBC | ESB | Dev/Eval | AI/ML |
+|---------|-----|--------|------|-----|----------|-------|
+| **MMU** | ✓ | ✓ | ✓ | ✗ | Varies | ✓ |
+| **3D GPU** | ✓ | ✓ | ✗ | ✗ | Varies | Optional |
+| **Full OS** | ✓ | ✓ | ✓ | ✗ | Varies | ✓ |
+| **Display Out** | ✓ | Via carrier | ✗/Embedded | ✗ | Varies | Optional |
+| **Standalone** | ✓ | ✗ | ✓ | ✓ | ✓ | ✓ |
+| **Production Ready** | ✓ | ✓ | ✓ | ✓ | ✗ | ✓ |
 
 ### Edge Cases and Overlapping Categories
 
@@ -241,9 +224,11 @@ Some boards span multiple categories or present classification challenges:
 - The distinction is about intent and features, not actual usage
 
 **SBC vs. eSBC Ambiguity:**
+- The key differentiator is a 3D-capable GPU, not merely the presence of a display connector
 - Boards with both HDMI and MIPI DSI outputs → Classify by GPU presence
-- If it can render a desktop GUI → **SBC**
-- If it only outputs framebuffer without 3D/2D acceleration → **eSBC**
+- If it has a 3D-capable GPU and can render a composited desktop GUI → **SBC**
+- If display output is driven by a VPU, 2D hardware engine, or framebuffer without 3D acceleration → **eSBC**
+- Example: a board with HDMI driven by a VPU for HMI applications (e.g. Luckfox Lyra with RV3506G2) → **eSBC**, not SBC
 
 **RTOS Capabilities:**
 - Modern RTOSes (Zephyr, NuttX) are increasingly capable
@@ -297,19 +282,15 @@ While any category can theoretically use any form factor, certain patterns are c
 - Custom compact sizes
 
 **ESBs** have the widest variety:
-- Arduino form factors (various standardized sizes)
+- Arduino form factors (various standardised sizes)
 - Feather/PICO formats (~51 × 21 mm)
 - Custom sizes based on ecosystem (Teensy, etc.)
 - From tiny (< 20 × 20 mm) to large (> 100 × 70 mm)
 
-**Dev/Eval Boards** are rarely standardized:
+**Dev/Eval Boards** are rarely standardised:
 - Sized to expose all chip functionality
 - Often larger to include debugging features
 - May include expansion headers and test points
-
-**FPGA Boards** vary by application:
-- Development boards: Often large (100+ mm) with many connectors
-- SoM variants: Compact with high-density connectors
 
 **AI/ML Accelerators** follow SBC patterns:
 - Standalone: Credit card to Mini-ITX sizes
@@ -328,10 +309,10 @@ Many modern consumer electronics devices contain boards that align with our taxo
 
 ### Recycling and Repurposing
 Consumer electronics boards can often be repurposed. When identifying a board from a consumer device:
-- If it runs full Linux (has MMU) and has GPU with standard display outputs (HDMI/VGA/DP/DVI) → **SBC**
-- If it runs full Linux (has MMU) but only has embedded display interfaces (MIPI DSI/LVDS) or no GPU → **eSBC**
+- If it runs full Linux (has MMU) and has a 3D-capable GPU with standard display outputs (HDMI/VGA/DP/DVI) → **SBC**
+- If it runs full Linux (has MMU) but only has embedded display interfaces (MIPI DSI/LVDS), or display output is VPU/2D-only without a 3D GPU → **eSBC**
 - If it only runs a basic RTOS or firmware (no MMU) → **ESB**
-- If it has specialized AI/ML hardware and that's the primary function → **AI/ML Accelerator**
+- If it has specialised AI/ML hardware and that's the primary function → **AI/ML Accelerator**
 
 This classification can help in understanding a board's capabilities and potential uses when repurposing hardware.
 
@@ -374,4 +355,6 @@ Quick links:
 
 5. **Living Document**: This taxonomy evolves with the industry. Check the [CHANGELOG.md](CHANGELOG.md) for updates and revisions to definitions.
 
-6. **License**: This taxonomy is available under the [MIT License](LICENSE), making it free to use, modify, and distribute.
+6. **FPGA Boards**: Field-Programmable Gate Arrays are reconfigurable hardware — the silicon has no fixed function until programmed with an HDL design. FPGA-based development boards are therefore classified at the hardware level as a specialised type of Development/Evaluation Board. The functional characteristics of any specific FPGA design loaded onto such a board (which may emulate an SBC, eSBC, ESB, or any other category) are outside the scope of this taxonomy. Classify the *board*, not the *loaded design*.
+
+7. **License**: This taxonomy is available under the [MIT License](LICENSE), making it free to use, modify, and distribute.
