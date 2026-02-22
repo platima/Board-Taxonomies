@@ -136,7 +136,7 @@ Examples:
 Boards built around Field-Programmable Gate Arrays, allowing hardware-level programmability and parallel processing.
 
 Key characteristics:
-- Centered around an FPGA chip (Xilinx, Intel/Altera, Lattice, etc.)
+- Centred around an FPGA chip (Xilinx, Intel/Altera, Lattice, etc.)
 - Hardware is reconfigurable at the logic gate level
 - Used for custom digital logic, hardware acceleration, and prototyping
 - Often includes additional peripherals for interfacing
