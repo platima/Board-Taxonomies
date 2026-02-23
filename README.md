@@ -4,6 +4,8 @@
 
 This repository provides definitions and examples for different categories of embedded computing boards. The goal is to establish clear terminology for discussing and categorising various types of development boards, single-board computers, and embedded platforms.
 
+_**Last Updated:** 2026-02-23_
+
 ## 📑 Table of Contents
 - [Categories](#categories)
   - [Single Board Computer (SBC)](#%EF%B8%8F-single-board-computer-sbc)
