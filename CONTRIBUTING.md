@@ -75,6 +75,7 @@ If you disagree with how a board is categorised:
 - Maintain consistent formatting with existing content
 - Use bulleted lists for characteristics
 - Include both common and technical terms where applicable
+- Use **Australian English** spelling throughout (e.g., behaviour, organisation, initialise, licence, colour)
 
 ## Questions?
 

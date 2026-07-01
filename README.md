@@ -4,7 +4,7 @@
 
 This repository provides definitions and examples for different categories of embedded computing boards. The goal is to establish clear terminology for discussing and categorising various types of development boards, single-board computers, and embedded platforms.
 
-_**Last Updated:** 2026-02-23_
+_**Last Updated:** 2026-07-02_
 
 ## 📑 Table of Contents
 - [Categories](#categories)
@@ -16,6 +16,7 @@ _**Last Updated:** 2026-02-23_
   - [AI/ML Accelerator Board](#-aiml-accelerator-board)
 - [Classification Guide](#%EF%B8%8F-classification-guide)
   - [Decision Tree](#decision-tree)
+  - [Worked Example: Classifying the Milk-V Duo S](#worked-example-classifying-the-milk-v-duo-s)
   - [Technical Differentiators](#technical-differentiators)
   - [Edge Cases and Overlapping Categories](#edge-cases-and-overlapping-categories)
 - [Common Form Factors](#-common-form-factors)
@@ -51,6 +52,7 @@ Examples:
 - Milk-V Mars
 - Pine64 ROCK64
 - SpacemiT Muse Pi Pro
+- Milk-V Oasis (RISC-V, Mini-ITX)
 
 ### 🖥️ Compute Module / System-on-Module (CM/SoM)
 The core computing system without fixed I/O, designed for integration into custom carrier boards. The terms "Compute Module" and "System-on-Module" are used interchangeably in the industry with no meaningful technical distinction.
@@ -189,6 +191,18 @@ Follow this flowchart to classify a board:
    - Yes → **Single Board Computer (SBC)**
    - No → **Embedded Single Board Computer (eSBC)**
 
+### Worked Example: Classifying the Milk-V Duo S
+
+Step-by-step classification of the Milk-V Duo S (SG2000 SoC, Linux-capable, MIPI CSI, no HDMI):
+
+1. **AI/ML acceleration primary purpose?** No — it is a general Linux board. Continue.
+2. **Chip evaluation / demonstration?** No — it is a production-ready eSBC. Continue.
+3. **MMU-capable processor?** Yes — the SG2000 runs Linux with full MMU. Continue.
+4. **Requires carrier board?** No — it is standalone. Continue.
+5. **3D-capable GPU?** No — the SG2000 has no 3D GPU; display is via MIPI DSI only, driven by a 2D engine. → **eSBC**
+
+Result: **Embedded Single Board Computer (eSBC)** — cracker form factor (43 × 43 mm).
+
 ### Technical Differentiators
 
 Key technical aspects that define categories:
@@ -232,6 +246,12 @@ Some boards span multiple categories or present classification challenges:
 - If display output is driven by a VPU, 2D hardware engine, or framebuffer without 3D acceleration → **eSBC**
 - Example: a board with HDMI driven by a VPU for HMI applications (e.g. Luckfox Lyra with RV3506G2) → **eSBC**, not SBC
 
+**SBC + AI/ML Accelerator Combos (e.g., Raspberry Pi 5 AI Kit):**
+- A standard SBC fitted with an M.2 or HAT-based AI/ML accelerator (e.g., Hailo-8L) becomes a dual-category system
+- Primary classification of the base board remains **SBC**
+- The complete system (board + accelerator) may also be described as an **AI/ML Accelerator** when the inference workload is the primary use case
+- Classify by the component being referenced, not the complete system
+
 **RTOS Capabilities:**
 - Modern RTOSes (Zephyr, NuttX) are increasingly capable
 - The key differentiator is MMU support, not OS sophistication
@@ -253,7 +273,7 @@ Different board categories typically align with certain form factors:
 - **CM4 / CM5**: 55 × 40 mm (Raspberry Pi Compute Module standard)
 - **Gumstick**: 51 × 21 mm base size, may extend to ~70 mm with Ethernet
 - **Stamp**: ~25 × 25 mm (ultra-compact modules)
-- **Cracker**: 43 × 43 mm to 50 × 50 mm (emerging square format)
+- **Cracker**: 43 × 43 mm to 50 × 50 mm (emerging square format; e.g., Milk-V Duo S at 43 × 43 mm, Luckfox Pico Ultra at 50 × 50 mm _(PoE HAT compatibility untested)_)
 
 ### Emerging Form Factors
 
