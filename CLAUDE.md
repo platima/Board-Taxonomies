@@ -7,8 +7,8 @@ This file provides context and conventions for AI assistants (such as Claude) wo
 **Board-Taxonomies** is a pure documentation repository that defines a clear, shared vocabulary for categorising embedded computing boards. There is no application code, build system, or test suite. All meaningful content lives in `README.md`.
 
 **Maintainer:** Platima (<kp+github@auth8.net>)
-**Primary branch:** `master`
-**Remote:** `http://local_proxy@127.0.0.1:35142/git/platima/Board-Taxonomies`
+**Primary branch:** `main`
+**Remote:** `https://github.com/platima/Board-Taxonomies.git`
 
 ---
 
@@ -27,15 +27,16 @@ There are no source files, dependency manifests, Dockerfiles, or CI/CD pipelines
 
 ## Purpose and Scope
 
-The taxonomy defines five board categories used across the embedded/maker community:
+The taxonomy defines six board categories used across the embedded/maker community:
 
 | Category | Abbreviation | Key trait |
 |---|---|---|
-| Single Board Computer | SBC | Full OS, display output |
-| Compute Module | CM | Core compute, requires carrier board |
-| Embedded Single Board Computer | eSBC | Full OS, headless (no display output) |
+| Single Board Computer | SBC | Full OS, 3D-capable GPU, display output |
+| Compute Module / System-on-Module | CM/SoM | Core compute, requires carrier board |
+| Embedded Single Board Computer | eSBC | Full OS, headless or no 3D GPU |
 | Embedded System Board | ESB | MCU/simple SoC, no full OS |
 | Development/Evaluation Board | DevBoard / EvalBoard | Chip showcase and prototyping |
+| AI/ML Accelerator Board | — | Dedicated NPU/TPU/AI coprocessor |
 
 A secondary section covers common **form factors** (Credit Card, Mini-ITX, SODIMM, CM4/CM5, Gumstick, Stamp, Cracker) and a **Consumer Electronics Integration** section explains how the taxonomy maps to repurposed hardware.
 
@@ -82,7 +83,7 @@ Examples: initialise, behaviour, colour, licence, serialisation, organisation, o
 
 Because this is a documentation-only repository, the "development" workflow is simple:
 
-1. **Branch** — create a `feature/<name>` or `fix/<name>` branch off `master` for non-trivial changes.
+1. **Branch** — create a `feature/<name>` or `fix/<name>` branch off `main` for non-trivial changes.
 2. **Edit** `README.md` directly — there is no code generation or build step.
 3. **Verify** Markdown renders correctly (headings, bullet lists, table of contents anchor links).
 4. **Commit** using [Conventional Commits](https://www.conventionalcommits.org/) format:
@@ -98,8 +99,8 @@ Because this is a documentation-only repository, the "development" workflow is s
 There are no linters, formatters, pre-commit hooks, or tests to run.
 
 ### Branching
-- `master` is the stable branch; direct pushes are acceptable for the maintainer.
-- Claude sessions work on `claude/<session-id>` branches and open pull requests to `master`.
+- `main` is the stable branch; direct pushes are acceptable for the maintainer.
+- Claude sessions work on `claude/<session-id>` branches and open pull requests to `main`.
 
 ### Standard task completion checklist
 Every change must complete **all** of these steps before it is considered done:
@@ -107,7 +108,7 @@ Every change must complete **all** of these steps before it is considered done:
 1. Edit `README.md` (and/or `CLAUDE.md` if conventions changed).
 2. Verify ToC anchor links still resolve after any heading changes.
 3. Commit with a Conventional Commits message (Australian English).
-4. Push and open a pull request to `master` if the change is non-trivial.
+4. Push and open a pull request to `main` if the change is non-trivial.
 
 ---
 
@@ -128,22 +129,37 @@ Every change must complete **all** of these steps before it is considered done:
 - Do not add boards that are not real, shipping products.
 
 ### Contribution pathway
-All non-trivial changes (new categories, significant rewording of definitions) should be proposed via a pull request rather than committed directly to `master`, so the maintainer can review them.
+All non-trivial changes (new categories, significant rewording of definitions) should be proposed via a pull request rather than committed directly to `main`, so the maintainer can review them.
 
 ---
 
 ## Key Reference: Board Classification Decision Tree
 
-When classifying an unknown board, apply the following logic (mirroring the "Recycling and Repurposing" section):
+When classifying an unknown board, apply the following logic (mirrors the 5-step Decision Tree in `README.md § Classification Guide`):
 
 ```
-Does it run a full multi-tasking OS (Linux, Windows)?
-├─ YES → Does it have standard display output (HDMI / DP / DVI / VGA)?
-│         ├─ YES → SBC
-│         └─ NO  → eSBC (or Compute Module if it requires a carrier board)
-└─ NO  → Is its primary purpose chip evaluation / demonstration?
-          ├─ YES → DevBoard / EvalBoard
-          └─ NO  → ESB (MCU or simple SoC, runs Arduino / MicroPython / RTOS)
+1. Is AI/ML acceleration the primary purpose?
+   ├─ YES → AI/ML Accelerator Board
+   └─ NO  → Continue
+
+2. Is it designed primarily to evaluate a specific chip?
+   ├─ YES → Development/Evaluation Board (includes FPGA dev boards)
+   └─ NO  → Continue
+
+3. Does it have an MMU-capable processor?
+   ├─ NO  → Embedded System Board (ESB) — runs bare-metal / Arduino / RTOS
+   └─ YES → Continue
+
+4. Does it require a carrier/base board for basic I/O?
+   ├─ YES → Compute Module / System-on-Module (CM/SoM)
+   └─ NO  → Continue
+
+5. Does it have a 3D-capable GPU for desktop graphics?
+   ├─ YES → Single Board Computer (SBC)
+   └─ NO  → Embedded Single Board Computer (eSBC)
 ```
 
-Compute Modules are a special case: they contain the CPU/RAM/storage of an SBC but expose no direct I/O — they always require a carrier board, which then determines whether the final assembly behaves as an SBC or eSBC.
+Key nuances:
+- The SBC/eSBC split is determined by a **3D-capable GPU**, not merely by the presence of a display connector. A VPU or 2D hardware engine driving HDMI does not qualify.
+- CM/SoM modules always require a carrier board; the complete system (module + carrier) may then behave as an SBC or eSBC depending on the carrier's GPU and display capabilities.
+- Boards with AI accelerators (e.g., NVIDIA Jetson, RK3588 boards) may be classified as either AI/ML Accelerator or SBC/eSBC — use the primary intended purpose.
